@@ -34,6 +34,7 @@ jobs:
           mode: 'validate'
 
   deploy-centos-staging:
+    needs: [rezilion-scan, rezilion-validate]
     runs-on: ubuntu-latest
     
     steps:
@@ -42,7 +43,7 @@ jobs:
         install -m 600 -D /dev/null ~/.ssh/id_rsa
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-    - name: connect and pull
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "./refresh_nodestest.sh && exit"
+    - name: connect and run script
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/home/centos/refresh_nodestest.sh && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
