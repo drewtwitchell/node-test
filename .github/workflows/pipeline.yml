@@ -16,6 +16,8 @@ jobs:
         with:
           image_name: 'dtwitch/node-test'
           mode: 'start'
+          command: |
+            timeout 10 node-test || true
       
   rezilion-validate:
     needs: [rezilion-scan]
