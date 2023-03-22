@@ -1,4 +1,4 @@
-name: CI
+name: Rezilion Test GitHub Action
 on: [push]
 jobs:
   rezilion-scan:
