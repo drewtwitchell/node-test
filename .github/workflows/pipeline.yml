@@ -1,4 +1,4 @@
-name: Rezilion GitHub Action Integration
+name: Rezilion GitHub Action Integration 
 on: [push]
 jobs:
  rezilion-scan:
