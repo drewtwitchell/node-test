@@ -4,7 +4,7 @@ jobs:
   rezilion-scan:
     runs-on: ubuntu-latest
     container:
-      image: node/node:4.2.1
+      image: node:4.2.1
     env:
       REZILION_LICENSE_KEY: ${{ secrets.REZILION_LICENSE_KEY }}
       REZILION_RUN_REMEDIATE: true
@@ -14,14 +14,14 @@ jobs:
     steps:
       - uses: Rezilion/github-action@v2.8.0 
         with:
-          image_name: 'node/node:4.2.1'
+          image_name: 'node:4.2.1'
           mode: 'start'
       
   rezilion-validate:
     needs: [rezilion-scan]
     runs-on: ubuntu-latest
     container:
-      image: node/node:4.2.1
+      image: node:4.2.1
     env:
       REZILION_LICENSE_KEY: ${{ secrets.REZILION_LICENSE_KEY }}
       REZILION_ACCESS_TOKEN: ${{ secrets.REZILION_ACCESS_TOKEN }}
