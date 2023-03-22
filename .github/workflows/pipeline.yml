@@ -44,6 +44,6 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
     - name: connect and run script
-      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/home/centos/refresh_nodestest.sh && exit"
+      run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/home/centos/refresh_nodetest.sh && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
