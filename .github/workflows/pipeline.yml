@@ -34,7 +34,7 @@ jobs:
           mode: 'validate'
 
   deploy-centos-staging:
-    needs: [rezilion-scan, rezilion-validate]
+    needs: [node-test, rezilion-validate]
     runs-on: ubuntu-latest
     
     steps:
