@@ -1,7 +1,7 @@
 name: Rezilion Test GitHub Action
 on: [push]
 jobs:
-  rezilion-scan:
+  node-test:
     runs-on: ubuntu-latest
     container:
       image: dtwitch/node-test
@@ -17,10 +17,10 @@ jobs:
           command: sleep 5
       
   rezilion-validate:
-    needs: [rezilion-scan]
+    needs: [node-test]
     runs-on: ubuntu-latest
     container:
-      image: dtwitch/node-test
+      image: rezilion/validate-ci:6978c669
     env:
       REZILION_LICENSE_KEY: ${{ secrets.REZILION_LICENSE_KEY }}
       REZILION_API_KEY: ${{ secrets.REZILION_API_KEY }}
